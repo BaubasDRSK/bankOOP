@@ -1,0 +1,18 @@
+{
+    "name": "oop/bank",
+    "description": "bank based on OOP PHP",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bank\\": "app/",
+            "App\\DB\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BaubasDRSK",
+            "email": "127085633+BaubasDRSK@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
