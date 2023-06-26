@@ -48,8 +48,6 @@ class AccountController
         $error2 = 0;
         $error3 = 0;
         $error4 = 0;
-        $data = new FileWriter('accounts');
-        $accounts = $data->showAll();
 
         $fname = trim($fname," ");
         $lname = trim($lname," ");
@@ -145,7 +143,6 @@ class AccountController
             }
             $account['balance'] += $value100;
             
-            // $data = new FileWriter('accounts');
             $data->update($id, $account);
             Messages::addMessage('success', 'Balance was updated');
             header('Location: /account/edit/'.$id);
@@ -167,9 +164,9 @@ class AccountController
 
             $account['balance'] -= $value100;
             
-            // $data = new FileWriter('accounts');
             $data->update($id, $account);
             Messages::addMessage('success', 'Balance was updated');
+
             if ($delete == 0){
             header('Location: /account/edit/'.$id);
             } else {
@@ -208,9 +205,14 @@ class AccountController
     public function destroy(int $id)
     {
         $data = new FileWriter('accounts');
+        $account = $data->show($id);
+        if ($account['balance']== 0){
         $data->delete($id);
-
         header('Location: /accounts');
+        }else {
+        Messages::addMessage('danger', 'Balance is not 0');
+        header('Location: /account/delete/'.$id);
+        }
     }
 
 

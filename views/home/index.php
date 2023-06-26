@@ -5,7 +5,11 @@
             </div>
             <div class="main-form">
             <a class="btn-blue" href="/accounts">Accounts</a>
-            <a class="btn-red" href="/login">Login</a>
+            <?php if(isset($_SESSION['user_email'])) :?>
+                <a class="btn-red" href="/logout">Logout</a>
+            <?php else :?>
+                <a class="btn-red" href="/login">Login</a>
+            <?php endif?>     
             </div>
         </div>
     </main>

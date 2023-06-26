@@ -69,6 +69,9 @@ class App {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'destroy') {
             return (new AccountController)->destroy($url[2]);
         }
+        if($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'destroy') {
+            return (new AccountController)->destroy($url[2]);
+        }
         // Bank END
         {
             return self::view('404', [
